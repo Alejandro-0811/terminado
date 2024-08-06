@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/cita.css">
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="/static/us.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Registrar Cita</title>
+</head>
+<body>
+    <header class="header_container">
+        <nav class="navbar">
+            <a href="{{ url_for('index') }}" class="navbar-brand">
+                <h1 class="site_name">Safe Pregnancy</h1>
+            </a>
+            {% if session.get('user_email') %}
+                <div class="contents">
+                    <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+                    <a href="{{ url_for('nosotros') }}" class="nav-link">Nosotros</a>
+                    <a href="{{ url_for('recursos') }}" class="nav-link">Recursos</a>
+                    <a href="{{ url_for('consejos') }}" class="nav-link">Consejos</a>
+                    <a href="{{ url_for('especialistas') }}" class="nav-link">Crear Cita</a>
+                </div>
+            {% else %}
+                <div class="contents">
+                    <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+                    <a href="{{ url_for('nosotros') }}" class="nav-link">Nosotros</a>
+                    <a href="{{ url_for('recursos') }}" class="nav-link">Recursos</a>
+                    <a href="{{ url_for('consejos') }}" class="nav-link">Consejos</a>
+                </div>
+            {% endif %}
+            <div class="session">
+                {% if session.get('logged_in') %}
+                    {% if session.get('user_email') %}
+                        <a href="{{ url_for('logout') }}" class="end-flex">Cerrar sesión</a>
+                        <a href="{{ url_for('mis_citas_paciente') }}" class="end-flex">Mis Citas</a>
+                    {% elif session.get('specialist_email') %}
+                        <a href="{{ url_for('logout') }}" class="end-flex">Cerrar sesión</a>
+                        <a href="{{ url_for('mis_citas') }}" class="end-flex">Administrar Citas</a>
+                    {% endif %}
+                {% else %}
+                    <div class="dropdown signin">
+                        <span class="dropdown-trigger">Inicia Sesión</span>
+                        <ul class="dropdown-content">
+                            <li><a href="{{ url_for('login_usuario') }}">Paciente</a></li>
+                            <li><a href="{{ url_for('login_especialista') }}">Especialista</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown signup">
+                        <span class="dropdown-trigger">Regístrate</span>
+                        <ul class="dropdown-content">
+                            <li><a href="{{ url_for('register') }}">Paciente</a></li>
+                            <li><a href="{{ url_for('register_specialist') }}">Especialista</a></li>
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+    
+    <div class="usbar">
+        Genera una cita 
+    </div>
+    <div class="form-x">
+        <div class="container">
+            <h1>Registrar Cita</h1>
+            <form action="{{ url_for('crear_cita', especialista_id=especialista_id) }}" method="POST">
+                <input type="hidden" id="especialista_id" name="especialista_id" value="{{ especialista_id }}" readonly required>
+    
+                <label for="fecha_cita">Fecha de la Cita:</label>
+                <input type="date" id="fecha_cita" name="fecha_cita" required>
+    
+                <label for="hora_cita">Hora de la Cita:</label>
+                <input type="time" id="hora_cita" name="hora_cita" required>
+    
+                <label for="motivo">Motivo de la Cita:</label>
+                <textarea id="motivo" name="motivo" rows="4" required></textarea>
+    
+                <button type="submit" class="signup-button">Registrar Cita</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="leftb">
+            <div class="contenedor-bott">
+                <h3>Nuestros contactos</h3>
+                <div class="contact-info">
+                    <p><a href="https://www.facebook.com" class="social-link"><i class="fab fa-facebook-f"></i> Facebook</a></p>
+                    <p><a href="https://www.instagram.com" class="social-link"><i class="fab fa-instagram"></i> Instagram</a></p>
+                    <p><a href="mailto:safepregnancy@gmail.com" class="social-link"><i class="fas fa-envelope"></i> safepregnancy@gmail.com</a></p>
+                    <p><a href="tel:+5244567890123" class="social-link"><i class="fas fa-phone-alt"></i> (+52) 4456 7890 123</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="bottom">
+            <p class="bottom-text">&copy; Safe Pregnancy, PI.</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com"><i class="fab fa-instagram fa-2x"></i></a>
+                <a href="https://www.facebook.com"><i class="fab fa-facebook-f fa-2x"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

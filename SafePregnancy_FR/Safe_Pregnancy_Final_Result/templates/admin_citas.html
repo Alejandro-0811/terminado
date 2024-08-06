@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración de Citas</title>
+    <link rel="stylesheet" href="/static/admins.css">
+</head>
+<body>
+    <header class="header_container">
+        <nav class="navbar">
+            <a href="{{ url_for('index') }}" class="navbar-brand">
+                <h1 class="site_name">Safe Pregnancy</h1>
+            </a>
+            <div class="contents">
+                <a href="{{ url_for('admin_especialistas') }}" class="nav-link">Especialistas</a>
+                <a href="{{ url_for('admin_usuarios') }}" class="nav-link">Usuarios</a>
+                <a href="{{ url_for('administracion') }}" class="nav-link">Bitacora</a>
+                <a href="{{ url_for('admin_citas') }}" class="nav-link">Citas</a>
+                <a href="{{ url_for('logout_admin') }}" class="nav-link">Log Out</a>
+            </div>
+        </nav>
+    </header>
+
+    <h1>Administración de Citas</h1>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flash-messages">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    
+    <form method="POST">
+        <input type="number" name="usuario_id" placeholder="ID Usuario" required>
+        <input type="number" name="especialista_id" placeholder="ID Especialista" required>
+        <input type="date" name="fecha_cita" required>
+        <input type="time" name="hora_cita" required>
+        <textarea name="motivo" placeholder="Motivo de la cita"></textarea>
+        <select name="estado">
+            <option value="realizada">Realizada</option>
+            <option value="cancelada">Cancelada</option>
+            <option value="pendiente">Pendiente</option>
+            <option value="aceptada">Aceptada</option>
+            <option value="rechazada">Rechazada</option>
+        </select>
+        <button type="submit" name="action" value="add">Agregar</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ID Usuario</th>
+                <th>ID Especialista</th>
+                <th>Fecha de la Cita</th>
+                <th>Hora de la Cita</th>
+                <th>Motivo</th>
+                <th>Estado</th>
+                <th>Fecha Creación</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cita in citas %}
+            <tr>
+                <form method="POST">
+                    <td>{{ cita[0] }} <input type="hidden" name="cita_id" value="{{ cita[0] }}"></td>
+                    <td><input type="number" name="usuario_id" value="{{ cita[1] }}"></td>
+                    <td><input type="number" name="especialista_id" value="{{ cita[2] }}"></td>
+                    <td><input type="date" name="fecha_cita" value="{{ cita[3] }}"></td>
+                    <td><input type="time" name="hora_cita" value="{{ cita[4] }}"></td>
+                    <td><textarea name="motivo">{{ cita[5] }}</textarea></td>
+                    <td>
+                        <select name="estado">
+                            <option value="realizada" {% if cita[6] == 'realizada' %}selected{% endif %}>Realizada</option>
+                            <option value="cancelada" {% if cita[6] == 'cancelada' %}selected{% endif %}>Cancelada</option>
+                            <option value="pendiente" {% if cita[6] == 'pendiente' %}selected{% endif %}>Pendiente</option>
+                            <option value="aceptada" {% if cita[6] == 'aceptada' %}selected{% endif %}>Aceptada</option>
+                            <option value="rechazada" {% if cita[6] == 'rechazada' %}selected{% endif %}>Rechazada</option>
+                        </select>
+                    </td>
+                    <td>{{ cita[7] }}</td>
+                    <td>
+                        <button type="submit" name="action" value="update">Actualizar</button>
+                        <button type="submit" name="action" value="delete">Eliminar</button>
+                    </td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

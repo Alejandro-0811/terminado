@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="/static/us.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Nosotros</title>
+</head>
+<body>
+    <header class="header_container">
+        <nav class="navbar">
+            <a href="{{ url_for('index') }}" class="navbar-brand">
+                <h1 class="site_name">Safe Pregnancy</h1>
+            </a>
+            {% if session.get('user_email') %}
+                <div class="contents">
+                    <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+                    <a href="{{ url_for('nosotros') }}" class="nav-link">Nosotros</a>
+                    <a href="{{ url_for('recursos') }}" class="nav-link">Recursos</a>
+                    <a href="{{ url_for('consejos') }}" class="nav-link">Consejos</a>
+                    <a href="{{ url_for('especialistas') }}" class="nav-link">Crear Cita</a>
+                </div>
+            {% else %}
+                <div class="contents">
+                    <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+                    <a href="{{ url_for('nosotros') }}" class="nav-link">Nosotros</a>
+                    <a href="{{ url_for('recursos') }}" class="nav-link">Recursos</a>
+                    <a href="{{ url_for('consejos') }}" class="nav-link">Consejos</a>
+                </div>
+            {% endif %}
+            <div class="session">
+                {% if session.get('logged_in') %}
+                    {% if session.get('user_email') %}
+                        <a href="{{ url_for('logout') }}" class="end-flex">Cerrar sesión</a>
+                        <a href="{{ url_for('mis_citas_paciente') }}" class="end-flex">Mis Cita</a>
+                    {% elif session.get('specialist_email') %}
+                        <a href="{{ url_for('logout') }}" class="end-flex">Cerrar sesión</a>
+                        <a href="{{ url_for('mis_citas') }}" class="end-flex">Administrar Citas</a>
+                    {% endif %}
+                {% else %}
+                    <div class="dropdown signin">
+                        <span class="dropdown-trigger">Inicia Sesión</span>
+                        <ul class="dropdown-content">
+                            <li><a href="{{ url_for('login_usuario') }}">Paciente</a></li>
+                            <li><a href="{{ url_for('login_especialista') }}">Especialista</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown signup">
+                        <span class="dropdown-trigger">Regístrate</span>
+                        <ul class="dropdown-content">
+                            <li><a href="{{ url_for('register') }}">Paciente</a></li>
+                            <li><a href="{{ url_for('register_specialist') }}">Especialista</a></li>
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    <div class="usbar">
+        Sobre Nosotros
+    </div>
+    
+    <div class="us-text-display">
+        <p class="us-text-header">
+            ¿Quiénes somos?
+        </p>
+        <h1 class="us-content">
+            Tu Compañero de Confianza En Cada Paso del Embarazo y Más Allá
+        </h1>
+        <div class="us-double">
+            <div class="us-l">
+                <p class="us-text-content">
+                    En Safe Pregnancy, comprendemos que cada embarazo es único y está lleno de emociones, 
+                    especialmente para las madres primerizas que se embarcan en esta nueva y maravillosa 
+                    etapa de sus vidas. Sabemos que el embarazo puede traer consigo una mezcla de alegría, 
+                    expectación y, a veces, incertidumbre. Por eso, nuestra misión es brindarte el apoyo, 
+                    la información y los recursos necesarios para que puedas disfrutar de un embarazo seguro, 
+                    saludable y pleno. Desde consejos sobre nutrición y ejercicio, hasta orientación sobre 
+                    el desarrollo del bebé y preparación para el parto, estamos aquí para acompañarte en 
+                    cada paso del camino, asegurándonos de que tengas la confianza y el conocimiento para 
+                    vivir esta experiencia de la mejor manera posible.
+                </p>
+                
+                <h2 class="us-oferta">¿Qué Ofrecemos?</h2>
+                
+                <div class="us-cuadricula">
+                    <div class="us-cleft">
+                        <div class="us-cuadrante">
+                            <div class="us-icon">
+                                <i class="fa fa-heart fa-4x" aria-hidden="true"></i>
+                            </div>
+                            <div class="us-right">
+                                <h1 class="us-tc">
+                                    Información Confiable
+                                </h1>
+                                <p class="us-text-cuadricula">
+                                    Accede a artículos, videos y guías elaboradas por profesionales 
+                                    de la salud para mantenerte informada sobre cada etapa del 
+                                    embarazo y el postparto.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="us-cuadrante">
+                            <div class="us-icon">
+                                <i class="fa fa-book fa-4x" aria-hidden="true"></i>
+                            </div>
+                            <div class="us-right">
+                                <h1 class="us-tc">
+                                    Consejos y Recursos
+                                </h1>
+                                <p class="us-text-cuadricula">
+                                    Encuentra consejos prácticos sobre el cuidado del bebé, 
+                                    bienestar emocional, y manejo de gastos para madres y 
+                                    padres primerizos.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="us-cright">
+                        <div class="us-cuadrante">
+                            <div class="us-icon">
+                                <i class="fa fa-suitcase fa-4x" aria-hidden="true"></i>
+                            </div>
+                            <div class="us-right">
+                                <h1 class="us-tc">
+                                    Apoyo Profesional
+                                </h1>
+                                <p class="us-text-cuadricula">
+                                    Conéctate con expertos en salud que te ofrecerán orientación 
+                                    personalizada y te ayudarán a resolver cualquier duda que tengas.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="us-cuarto-cuadrante">
+                        </div>
+                    </div>
+                </div>
+                <div class="us-text-content">
+                    <p>
+                        A diferencia de otras plataformas, en Safe Pregnancy nos enfocamos 
+                        no solo en acompañarte durante el embarazo, sino también en el crucial 
+                        período del postparto. Proporcionamos contenido exclusivo para prevenir 
+                        y manejar enfermedades físicas y mentales después del parto, asegurando 
+                        así tu bienestar continuo y el de tu bebé.        
+                    </p>
+                </div>
+            </div>
+            <div class="us-r">
+                <img src="{{ url_for('static', filename='img/helty-pregnancy.jpg') }}" alt="Imagen de embarazo saludable">
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="leftb">
+            <div class="contenedor-bott">
+                <h3>Nuestros contactos</h3>
+                <div class="contact-info">
+                    <p><a href="https://www.facebook.com" class="social-link"><i class="fab fa-facebook-f"></i> Facebook</a></p>
+                    <p><a href="https://www.instagram.com" class="social-link"><i class="fab fa-instagram"></i> Instagram</a></p>
+                    
+                    <p><a href="mailto:safepregnancy@gmail.com" class="social-link"><i class="fas fa-envelope"></i> safepregnancy@gmail.com</a></p>
+                    <p><a href="tel:+5244567890123" class="social-link"><i class="fas fa-phone-alt"></i> (+52) 4456 7890 123</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="bottom">
+            <p class="bottom-text">&copy; Safe Pregnancy, PI.</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com"><i class="fab fa-instagram fa-2x"></i></a>
+                <a href="https://www.facebook.com"><i class="fab fa-facebook-f fa-2x"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+</html>

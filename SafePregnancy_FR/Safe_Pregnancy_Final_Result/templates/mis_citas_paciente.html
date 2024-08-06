@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="/static/style-citas-paciente.css">
+    <title>Mis Citas - Paciente</title>
+
+    <script>
+        function confirmarCancelacion(event) {
+            if (!confirm("¿Estás seguro de que quieres cancelar esta cita?")) {
+                event.preventDefault();
+            }
+        }
+    </script>
+</head>
+<body>
+
+    
+    <header class="header_container">
+        <nav class="navbar">
+            <a href="{{ url_for('index') }}" class="navbar-brand">
+                <h1 class="site_name">Safe Pregnancy</h1>
+            </a>
+            {% if session.get('user_email') %}
+                <div class="contents">
+                    <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+                    <a href="{{ url_for('nosotros') }}" class="nav-link">Nosotros</a>
+                    <a href="{{ url_for('recursos') }}" class="nav-link">Recursos</a>
+                    <a href="{{ url_for('consejos') }}" class="nav-link">Consejos</a>
+                    <a href="{{ url_for('especialistas') }}" class="nav-link">Crear Cita</a>
+                </div>
+            {% else %}
+                <div class="contents">
+                    <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+                    <a href="{{ url_for('nosotros') }}" class="nav-link">Nosotros</a>
+                    <a href="{{ url_for('recursos') }}" class="nav-link">Recursos</a>
+                    <a href="{{ url_for('consejos') }}" class="nav-link">Consejos</a>
+                </div>
+            {% endif %}
+            <div class="session">
+                {% if session.get('logged_in') %}
+                    {% if session.get('user_email') %}
+                        <a href="{{ url_for('logout') }}" class="end-flex">Cerrar sesión</a>
+                        <a href="{{ url_for('mis_citas_paciente') }}" class="end-flex">Mis Cita</a>
+                    {% elif session.get('specialist_email') %}
+                        <a href="{{ url_for('logout') }}" class="end-flex">Cerrar sesión</a>
+                        <a href="{{ url_for('mis_citas') }}" class="end-flex">Administrar Citas</a>
+                    {% endif %}
+                {% else %}
+                    <div class="dropdown signin">
+                        <span class="dropdown-trigger">Inicia Sesión</span>
+                        <ul class="dropdown-content">
+                            <li><a href="{{ url_for('login_usuario') }}">Paciente</a></li>
+                            <li><a href="{{ url_for('login_especialista') }}">Especialista</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown signup">
+                        <span class="dropdown-trigger">Regístrate</span>
+                        <ul class="dropdown-content">
+                            <li><a href="{{ url_for('register') }}">Paciente</a></li>
+                            <li><a href="{{ url_for('register_specialist') }}">Especialista</a></li>
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+<div class="r-container">
+    <h1>Mis Citas</h1>
+    <table class="r-table">
+        <thead>
+            <tr>
+                <th class="r-th">Especialista</th>
+                <th class="r-th">Fecha de la Cita</th>
+                <th class="r-th">Hora de la Cita</th>
+                <th class="r-th">Motivo</th>
+                <th class="r-th">Estado</th>
+                <th class="r-th">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cita in citas %}
+            <tr class="r-tr">
+                <td class="r-td">{{ cita[1] }}</td>
+                <td class="r-td">{{ cita[2] }}</td>
+                <td class="r-td">{{ cita[3] }}</td>
+                <td class="r-td">{{ cita[4] }}</td>
+                <td class="r-td">{{ cita[5] }}</td>
+                <td class="r-td">
+                    {% if cita[5] == 'pendiente' %}
+                    <form action="{{ url_for('cancelar_cita', cita_id=cita[0]) }}" method="POST" onsubmit="confirmarCancelacion(event)">
+                        <button class="r-button" type="submit">Cancelar</button>
+                    </form>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

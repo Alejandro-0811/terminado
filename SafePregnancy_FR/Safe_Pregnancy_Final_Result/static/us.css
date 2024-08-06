@@ -1,0 +1,104 @@
+
+
+.usbar {
+    background-image: url(/static/img/appointment-background.jpg);
+    background-color: rgb(175, 175, 175);
+    background-size: cover;
+    width: 100%;
+    margin-top: 6rem;
+    padding-top: 140px;
+    padding-bottom: 140px;   
+    text-align: center; 
+    font-size: 72px;
+    font-weight: bold;
+    color: white;
+    margin-left: 0;
+    margin-right: 0;
+    text-transform: uppercase;
+}
+
+.us-text-header {
+    padding-top: 75px;
+    padding-bottom: 65px;
+    padding-right: 7rem;
+    text-align: center; 
+    color: #FF4F9D; 
+    font-size: 24px;
+}
+
+.us-content {
+    padding-bottom: 50px;
+    text-transform: uppercase;
+    font-size: 52px;
+    text-align: center; 
+    padding-right: 7rem;
+}
+
+.us-text-display{
+    padding-left: 6rem;
+}
+
+.us-text-content{
+    font-size: larger;  
+    text-align: justify; 
+}
+
+.us-oferta{
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+}
+
+.us-cuadricula {
+    display: flex;
+    justify-content: center;
+}
+
+.us-cuadrante{
+    display: flex;
+}
+
+.us-icon{
+    color: #FF4F9D;
+    padding-left: 2rem;
+    padding-right: 1.5rem;
+    padding-top: 2rem;
+}
+
+.us-right {
+    align-self: center;
+    padding-right: 3rem;
+    padding-bottom: 4rem;
+    
+}
+
+.us-tc{
+    font-size: 24px;
+    padding-bottom: 1rem;
+}
+
+.us-text-cuadricula{
+    font-weight: 400;
+    text-align: justify;
+    font-size: 1rem;
+}
+
+.us-double{
+    display: flex;
+}
+
+.us-l{
+    padding-right: 1rem;
+    padding-bottom: 6rem;
+}
+
+.us-r img {
+    transform: scaleX(-1);
+    width: 420px; 
+    height: auto; 
+}
+
+.us-double{
+    align-items: center;
+}

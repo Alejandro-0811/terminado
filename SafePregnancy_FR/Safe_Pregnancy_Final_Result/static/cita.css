@@ -1,0 +1,68 @@
+.form-x{
+    padding: 7rem;
+    background-color: #FF4F9D;
+}
+.container {
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+}
+
+.container h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form label {
+    display: block;
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+form input[type="number"],
+form input[type="date"],
+form input[type="time"],
+form input[type="text"]:disabled,
+form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #f4f4f4; /* Slightly different background color for disabled fields */
+    color: #999; /* Gray out text for disabled fields */
+}
+
+form input[type="text"]:disabled {
+    background-color: #f4f4f4; /* Slightly different background color for disabled fields */
+    color: #999; /* Gray out text for disabled fields */
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.signup-button {
+    background-color: #FF4F9D;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.signup-button:hover {
+    background-color: #FF4F9D;
+    transform: scale(1.05);
+}

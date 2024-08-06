@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración de Especialistas</title>
+    <link rel="stylesheet" href="/static/admins.css">
+</head>
+<body>
+    <header class="header_container">
+        <nav class="navbar">
+            <a href="{{ url_for('index') }}" class="navbar-brand">
+                <h1 class="site_name">Safe Pregnancy</h1>
+            </a>
+            <div class="contents">
+                <a href="{{ url_for('admin_especialistas') }}" class="nav-link">Especialistas</a>
+                <a href="{{ url_for('admin_usuarios') }}" class="nav-link">Usuarios</a>
+                <a href="{{ url_for('administracion') }}" class="nav-link">Bitacora</a>
+                <a href="{{ url_for('admin_citas') }}" class="nav-link">Citas</a>
+                <a href="{{ url_for('logout_admin') }}" class="nav-link">Log Out</a>
+            </div>
+        </nav>
+    </header>
+    
+    <h1>Administración de Especialistas</h1>
+    <form method="POST">
+        <input type="text" name="nombre" placeholder="Nombre" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="telefono" placeholder="Teléfono">
+        <input type="text" name="especialidad" placeholder="Especialidad" required>
+        <input type="text" name="direccion" placeholder="Dirección">
+        <textarea name="sobre_mi" placeholder="Sobre mí"></textarea>
+        <input type="password" name="contraseña" placeholder="Contraseña" required>
+        <button type="submit" name="action" value="add">Agregar</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Especialidad</th>
+                <th>Dirección</th>
+                <th>Sobre mí</th>
+                <th>Contraseña</th>
+                <th>Fecha Registro</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for especialista in especialistas %}
+            <tr>
+                <form method="POST">
+                    <td>{{ especialista[0] }} <input type="hidden" name="specialist_id" value="{{ especialista[0] }}"></td>
+                    <td><input type="text" name="nombre" value="{{ especialista[1] }}"></td>
+                    <td><input type="email" name="email" value="{{ especialista[2] }}"></td>
+                    <td><input type="text" name="telefono" value="{{ especialista[3] }}"></td>
+                    <td><input type="text" name="especialidad" value="{{ especialista[4] }}"></td>
+                    <td><input type="text" name="direccion" value="{{ especialista[5] }}"></td>
+                    <td><textarea name="sobre_mi">{{ especialista[6] }}</textarea></td>
+                    <td><input type="password" name="contraseña" value="{{ especialista[7] }}"></td>
+                    <td>{{ especialista[8] }}</td>
+                    <td>
+                        <button type="submit" name="action" value="update">Actualizar</button>
+                        <button type="submit" name="action" value="delete">Eliminar</button>
+                    </td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

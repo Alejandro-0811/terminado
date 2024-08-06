@@ -1,0 +1,122 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.page-title {
+    position: fixed; 
+    top: 2rem;
+    left: 5rem;
+}
+
+.text {
+    letter-spacing: 1px; 
+    font-size: 30px;
+    font-weight: bold;
+    color: #FF4F9D; 
+    text-decoration: none;
+}
+
+.register-link {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+}
+
+.register-link a {
+    text-decoration: none;
+    color: #333;
+}
+
+.register-link a span {
+    color: #c66787;
+}
+
+.signup-container {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    padding: 3rem;
+    border-radius: 10px;
+}
+
+.signup-container h1 {
+    margin: 0;
+    font-size: 1.75rem;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.input-field {
+    margin-bottom: 1.7rem;
+    text-align: left;
+}
+
+.input-field label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.input-field input,
+.input-field select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box; 
+}
+
+.signup-button {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #fe93b7;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease; 
+}
+
+.signup-button:hover {
+    background-color: #e681a3;
+}
+
+.flash-messages {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    text-align: left;
+}
+
+.flash-messages li {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    color: #fff !important; /* Force white text color */
+    font-weight: bold;
+    background-color: #ff9800 !important; /* Default background color */
+}
+
+.flash-messages li.success {
+    background-color: #4CAF50 !important; /* Green */
+}
+
+.flash-messages li.error {
+    background-color: #f44336 !important; /* Red */
+}
+
+.flash-messages li.warning {
+    background-color: #ff9800 !important; /* Orange */
+}
+
+.flash-messages li.info {
+    background-color: #2196F3 !important; /* Blue */
+}

@@ -1,0 +1,118 @@
+
+.contentbar {
+    background-image: url(/static/img/appointment-background.jpg);
+    background-color: rgb(175, 175, 175);
+    background-size: cover;
+    width: 100%;
+    margin-top: 6rem;
+    padding-top: 140px;
+    padding-bottom: 140px;   
+    text-align: center; 
+    font-size: 72px;
+    font-weight: bold;
+    color: white;
+    margin-left: 0;
+    margin-right: 0;
+    text-transform: uppercase;
+}
+
+.cont-text-display{
+    padding: 0rem 7rem;
+}
+
+.cont-text-header {
+    color: #FF4F9D; 
+    font-size: 24px;
+    text-align: center; 
+    padding-top: 75px;
+    padding-bottom: 65px;
+}
+
+.cont-content {
+    padding-bottom: 50px;
+    text-transform: uppercase;
+    font-size: 52px;
+    text-align: center; 
+}
+.r-columnas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 100px;
+    gap: 30px;
+}
+
+
+
+.content-container {
+    background-color: rgb(249, 248, 246);
+    align-items: center;
+    display: flex;
+    height: 360px;
+    width: 620px;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    transition: background-color 0.5s ease;
+    margin-bottom: 20px;
+}
+
+.content-container p {
+    padding: 10px 0 25px 0;
+}
+
+.boton {
+    padding: 10px;
+    border-radius: 30px;
+    background-color: #FF4F9D;
+    letter-spacing: 1px;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.5s ease, color 0.5s ease; 
+}
+
+.boton:hover {
+    border-radius: 10px;
+    transition: border-radius 0.3s ease;
+}
+
+.content-container:hover {
+    background-color: #FF4F9D;
+    color: white;
+}
+
+.content-container:hover .boton {
+    background-color: white;
+    color: #FF4F9D;
+}
+
+.img-cont img {
+    height: 120px;
+    width: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease; 
+}
+
+.img-cont img:hover {
+    transform: scale(1.1); 
+}
+.left .text-cont {
+    text-align: right;
+}
+
+.right .text-cont {
+    text-align: left;
+}
+
+.left .content-container {
+    border-right: 4px solid #FF4F9D;
+}
+
+.right .content-container {
+    border-left: 4px solid #FF4F9D;
+}
+
+.text-cont p{
+    font-size: 20px;
+    padding: 1rem 0;
+}

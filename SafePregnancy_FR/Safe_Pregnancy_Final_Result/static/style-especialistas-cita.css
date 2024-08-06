@@ -1,0 +1,71 @@
+
+.l-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    padding-top: 7rem;
+}
+.l-h1 {
+    margin-bottom: 1.5rem;
+    font-size: 28px;
+    color: #333;
+    border-bottom: 2px solid #FF4F9D;
+    padding-bottom: 0.5rem;
+}
+.l-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+.l-th, .l-td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+.l-th {
+    background-color: #FF4F9D;
+    color: #fff;
+    font-size: 16px;
+}
+.l-tr:hover {
+    background-color: #f1f1f1;
+}
+.l-form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.l-select, .l-button, .l-textarea {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.l-select, .l-button {
+    max-width: 200px; 
+}
+.l-textarea {
+    flex: 1;
+    max-width: 500px; 
+    resize: vertical;
+    height: 80px;
+}
+.l-button {
+    background-color: #FF4F9D;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+.l-button:hover {
+    background-color: #FF4F9D;
+}
+.l-actions {
+    display: flex;
+    align-items: center;
+}
+.l-hidden {
+    display: none; 
+}

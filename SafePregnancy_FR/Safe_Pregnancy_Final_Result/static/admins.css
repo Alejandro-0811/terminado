@@ -1,0 +1,130 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+form input,
+form textarea,
+form select {
+    margin: 5px 0;
+    padding: 10px;
+    width: 80%;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+td form {
+    display: flex;
+    flex-direction: column;
+}
+
+td form button {
+    margin: 5px 0;
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+td form button:hover {
+    background-color: #45a049;
+}
+
+
+/* General header styles */
+.header_container {
+    background-color: #FF4F9D; /* Dark background */
+    padding: 1rem 2rem; /* Padding for spacing */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Navbar styles */
+.navbar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* Logo and site name */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+}
+
+.site_name {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Navigation links container */
+.contents {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+}
+
+/* Navigation links */
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 2rem;
+    font-size: 1rem;
+}
+
+.nav-link:hover {
+    color: #ddd; /* Lighter color on hover */
+}

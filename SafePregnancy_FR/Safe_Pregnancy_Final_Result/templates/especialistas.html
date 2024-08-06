@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Especialistas</title>
+    <link rel="stylesheet" href="/static/especialistas.css">
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    
+    <header class="header_container">
+        <nav class="navbar">
+            <a href="{{ url_for('index') }}" class="navbar-brand">
+                <h1 class="site_name">Safe Pregnancy</h1>
+            </a>
+            {% if session.get('user_email') %}
+                <div class="contents">
+                    <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+                    <a href="{{ url_for('nosotros') }}" class="nav-link">Nosotros</a>
+                    <a href="{{ url_for('recursos') }}" class="nav-link">Recursos</a>
+                    <a href="{{ url_for('consejos') }}" class="nav-link">Consejos</a>
+                    <a href="{{ url_for('especialistas') }}" class="nav-link">Crear Cita</a>
+                </div>
+            {% else %}
+                <div class="contents">
+                    <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+                    <a href="{{ url_for('nosotros') }}" class="nav-link">Nosotros</a>
+                    <a href="{{ url_for('recursos') }}" class="nav-link">Recursos</a>
+                    <a href="{{ url_for('consejos') }}" class="nav-link">Consejos</a>
+                </div>
+            {% endif %}
+            <div class="session">
+                {% if session.get('logged_in') %}
+                    {% if session.get('user_email') %}
+                        <a href="{{ url_for('logout') }}" class="end-flex">Cerrar sesión</a>
+                        <a href="{{ url_for('mis_citas_paciente') }}" class="end-flex">Mis Cita</a>
+                    {% elif session.get('specialist_email') %}
+                        <a href="{{ url_for('logout') }}" class="end-flex">Cerrar sesión</a>
+                        <a href="{{ url_for('mis_citas') }}" class="end-flex">Administrar Citas</a>
+                    {% endif %}
+                {% else %}
+                    <div class="dropdown signin">
+                        <span class="dropdown-trigger">Inicia Sesión</span>
+                        <ul class="dropdown-content">
+                            <li><a href="{{ url_for('login_usuario') }}">Paciente</a></li>
+                            <li><a href="{{ url_for('login_especialista') }}">Especialista</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown signup">
+                        <span class="dropdown-trigger">Regístrate</span>
+                        <ul class="dropdown-content">
+                            <li><a href="{{ url_for('register') }}">Paciente</a></li>
+                            <li><a href="{{ url_for('register_specialist') }}">Especialista</a></li>
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+    
+    <div class="x">
+        <h1 class="x">Especialistas</h1>
+        <h1 class="x">Especialistas</h1>
+        <div class="x-search-container">
+            <input type="text" id="x-search-input" placeholder="Buscar especialista...">
+        </div>
+        <div class="x-container">
+            {% for especialista in especialistas %}
+            <div class="x-formula" onclick="openModal('modal{{ especialista[0] }}')">
+                <i class="fas fa-user-md" style="font-size: 100px; color: #ccc;"></i>
+                <h2 class="x">{{ especialista[1] }}</h2>
+                <p class="x">{{ especialista[3] }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    
+        <div class="x-overlay" id="x-overlay">
+            {% for especialista in especialistas %}
+            <div class="x-modal" id="modal{{ especialista[0] }}">
+                <button class="x-close-btn" onclick="closeModal()">×</button>
+    
+                <h2 class="x">{{ especialista[1] }}</h2>
+                <p class="x">Correo: {{ especialista[2] }}</p>
+                <p class="x">Especialidad: {{ especialista[3] }}</p>
+                <p class="x">Teléfono: {{ especialista[4] }}</p>
+                <p class="x">Dirección: {{ especialista[5] }}</p>
+                <p class="x">Sobre mí: {{ especialista[6] }}</p>
+    
+                <button class="x-custom-button" onclick="realizarCita('{{ especialista[0] }}')">Realizar una cita</button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="leftb">
+            <div class="contenedor-bott">
+                <h3>Nuestros contactos</h3>
+                <div class="contact-info">
+                    <p><a href="https://www.facebook.com" class="social-link"><i class="fab fa-facebook-f"></i> Facebook</a></p>
+                    <p><a href="https://www.instagram.com" class="social-link"><i class="fab fa-instagram"></i> Instagram</a></p>
+                    
+                    <p><a href="mailto:safepregnancy@gmail.com" class="social-link"><i class="fas fa-envelope"></i> safepregnancy@gmail.com</a></p>
+                    <p><a href="tel:+5244567890123" class="social-link"><i class="fas fa-phone-alt"></i> (+52) 4456 7890 123</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="bottom">
+            <p class="bottom-text">&copy; Safe Pregnancy, PI.</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com"><i class="fab fa-instagram fa-2x"></i></a>
+                <a href="https://www.facebook.com"><i class="fab fa-facebook-f fa-2x"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('x-search-input').addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            const formulas = document.querySelectorAll('.x-formula');
+
+            formulas.forEach(function(formula) {
+                const texts = formula.querySelectorAll('h2, p');
+                let found = false;
+                texts.forEach(function(textElement) {
+                    const text = textElement.textContent || textElement.innerText;
+                    if (text.toLowerCase().includes(query)) {
+                        found = true;
+                    }
+                });
+                if (found) {
+                    formula.classList.remove('hidden');
+                } else {
+                    formula.classList.add('hidden');
+                }
+            });
+        });
+
+        function openModal(modalId) {
+            document.getElementById('x-overlay').style.display = 'flex';
+            document.querySelectorAll('.x-modal').forEach(modal => {
+                modal.style.display = 'none';
+            });
+            document.getElementById(modalId).style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('x-overlay').style.display = 'none';
+            document.querySelectorAll('.x-modal').forEach(modal => {
+                modal.style.display = 'none';
+            });
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        function realizarCita(especialistaId) {
+            window.location.href = `/crear_cita?especialista_id=${especialistaId}`;
+        }
+    </script>
+</body>
+</html>

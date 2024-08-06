@@ -1,0 +1,123 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.x-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.x-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.x-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.x-table th, .x-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.x-table th {
+    background-color: #f4f4f4;
+}
+
+.x-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.x-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.x-table tbody td {
+    word-wrap: break-word;
+    max-width: 200px;
+}
+
+.x-table tbody tr td:first-child {
+    text-align: center;
+}
+
+.x-add-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #28a745;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.x-add-button:hover {
+    background-color: #218838;
+}
+
+
+/* General header styles */
+.header_container {
+    background-color: #FF4F9D; /* Dark background */
+    padding: 1rem 2rem; /* Padding for spacing */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Navbar styles */
+.navbar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* Logo and site name */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+}
+
+.site_name {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Navigation links container */
+.contents {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+}
+
+/* Navigation links */
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 2rem;
+    font-size: 1rem;
+}
+
+.nav-link:hover {
+    color: #ddd; /* Lighter color on hover */
+}

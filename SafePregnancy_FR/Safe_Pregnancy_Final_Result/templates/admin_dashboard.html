@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración</title>
+    <link rel="stylesheet" href="/static/administracion.css">
+    <link rel="stylesheet" href="/Safe_Pregnancy_Final_Result/static/styles.css">
+</head>
+<body>
+    <header class="header_container">
+        <nav class="navbar">
+            <a href="{{ url_for('index') }}" class="navbar-brand">
+                <h1 class="site_name">Safe Pregnancy</h1>
+            </a>
+            <div class="contents">
+                <a href="{{ url_for('admin_especialistas') }}" class="nav-link">Especialistas</a>
+                <a href="{{ url_for('admin_usuarios') }}" class="nav-link">Usuarios</a>
+                <a href="{{ url_for('administracion') }}" class="nav-link">Bitacora</a>
+                <a href="{{ url_for('admin_citas') }}" class="nav-link">Citas</a>
+                <a href="{{ url_for('logout_admin') }}" class="nav-link">Log Out</a>
+            </div>
+        </nav>
+    </header>
+    
+    
+    <div class="x-container">
+        <h1 class="x-title">Bitácora de Operaciones</h1>
+        <table class="x-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tabla</th>
+                    <th>Operación</th>
+                    <th>Descripción</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in bitacora %}
+                <tr>
+                    <td>{{ entry[0] }}</td>
+                    <td>{{ entry[1] }}</td>
+                    <td>{{ entry[2] }}</td>
+                    <td>{{ entry[3] }}</td>
+                    <td>{{ entry[4] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
